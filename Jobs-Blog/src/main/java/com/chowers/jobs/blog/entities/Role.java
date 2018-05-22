@@ -1,22 +1,28 @@
 package com.chowers.jobs.blog.entities;
 
-import org.springframework.security.core.GrantedAuthority;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-public enum Role implements GrantedAuthority
-{
-    USER("ROLE_USER"),
-    ADMIN("ROLE_ADMIN");
+@Entity
+public class Role {
 
-    private String authority;
+    @Id
+    @GeneratedValue
+    private Long id;
+    String name;
 
-    Role(String authority)
-    {
-        this.authority = authority;
+    Role() {}
+
+    public Role(String name) {
+        this.name = name;
     }
 
-    @Override
-    public String getAuthority()
-    {
-        return this.authority;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 }

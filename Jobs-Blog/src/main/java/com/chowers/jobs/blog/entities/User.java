@@ -1,119 +1,56 @@
 package com.chowers.jobs.blog.entities;
 
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
-@javax.persistence.Entity
-public class User implements Entity, UserDetails
-{
+@Entity
+public class User {
+
     @Id
     @GeneratedValue
     private Long id;
+    private String username;
 
-    @Column(unique = true, length = 16, nullable = false)
-    private String name;
-
-    @Column(length = 80, nullable = false)
+    @JsonIgnore
     private String password;
+    @OneToMany(fetch = FetchType.EAGER, cascade=CascadeType.ALL)
+    private List<Role> roles;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    private Set<Role> roles = new HashSet<Role>();
+    User() {}
 
-    protected User()
-    {
-        /* Reflection instantiation */
-    }
-
-    public User(String name, String passwordHash)
-    {
-        this.name = name;
-        this.password = passwordHash;
-    }
-
-    public Long getId()
-    {
-        return this.id;
-    }
-
-    public void setId(Long id)
-    {
-        this.id = id;
-    }
-
-    public String getName()
-    {
-        return this.name;
-    }
-
-    public void setName(String name)
-    {
-        this.name = name;
-    }
-
-    public Set<Role> getRoles()
-    {
-        return this.roles;
-    }
-
-    public void setRoles(Set<Role> roles)
-    {
+    public User(String username, String password, List<Role> roles) {
+        this.username = username;
+        this.password = password;
         this.roles = roles;
     }
 
-    public void addRole(Role role)
-    {
-        this.roles.add(role);
+    public String getUsername() {
+        return username;
     }
 
-    @Override
-    public String getPassword()
-    {
-        return this.password;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public void setPassword(String password)
-    {
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
         this.password = password;
     }
 
-    @Override
-    public Collection<? extends GrantedAuthority> getAuthorities()
-    {
-        return this.getRoles();
+    public List<Role> getRoles() {
+        return roles;
     }
 
-    @Override
-    public String getUsername()
-    {
-        return this.name;
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
     }
 
-    @Override
-    public boolean isAccountNonExpired()
-    {
-        return true;
-    }
-
-    @Override
-    public boolean isAccountNonLocked()
-    {
-        return true;
-    }
-
-    @Override
-    public boolean isCredentialsNonExpired()
-    {
-        return true;
-    }
-
-    @Override
-    public boolean isEnabled()
-    {
-        return true;
+    public Long getId() {
+        return id;
     }
 }
