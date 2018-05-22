@@ -1,31 +1,65 @@
 package com.chowers.jobs.blog.entities;
 
-import javax.persistence.Column;
+
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
-/**
- * Created by mghasemy on 12/10/16.
- */
-@javax.persistence.Entity
-public class Comment implements Entity {
+
+@Entity
+public class Comment {
+
     @Id
     @GeneratedValue
-    private Long id;
+    private Long Id;
 
-    @Column
     private String text;
 
-    @Column
-    private Long blogid;
+    @ManyToOne
+    private Post post;
 
+    @ManyToOne
+    private User creator;
 
-    @Override
+    public Comment() {
+    }
+
+    public Comment(String text, Post post, User creator) {
+        this.text = text;
+        this.post = post;
+        this.creator = creator;
+    }
+
     public Long getId() {
-        return id;
+        return Id;
     }
 
     public void setId(Long id) {
-        this.id = id;
+        Id = id;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public Post getPost() {
+        return post;
+    }
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
+
+    public User getCreator() {
+        return creator;
+    }
+
+    public void setCreator(User creator) {
+        this.creator = creator;
     }
 }
