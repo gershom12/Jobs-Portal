@@ -2,6 +2,7 @@ package com.chowers.jobs.blog.entities;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Post {
@@ -13,6 +14,9 @@ public class Post {
     private String title;
     private String body;
     private Date dateCreated;
+    
+    @OneToMany
+    private List<Comment> comments;
 
     @ManyToOne
     private User creator;
