@@ -9,9 +9,7 @@ public interface CommentService {
 
     public List<Comment> getComments(Long postId);
 
-    public void saveComment(Comment comment);
-    
-    public boolean updateComment(Long id);
+    public void saveOrUpdateComment(Comment comment);
 
     public boolean deleteComment(Long id);
     
