@@ -17,5 +17,7 @@ public interface PostService {
     public boolean deletePost(Long postId);
     
     public Post getPost(Long id);
+    
+     public Post find(Long postId);
 }
 
