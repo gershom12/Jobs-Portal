@@ -8,6 +8,7 @@ This project is based on the [Spring Boot](http://projects.spring.io/spring-boot
 - Spring Core
 - Spring Data (Hibernate & MySQL/Postgres/MongoDB)
 - Spring MVC 
+- Waffle.io for issue tracking
 
 
 ## Installation 
