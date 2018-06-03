@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.chowers.jobs.blog.BlogDemoApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.814 sec - in com.chowers.jobs.blog.BlogDemoApplicationTests

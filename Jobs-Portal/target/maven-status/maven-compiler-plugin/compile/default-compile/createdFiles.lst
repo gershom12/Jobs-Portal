@@ -1,0 +1,5 @@
+com\chowers\jobs\blog\controllers\HomeController.class
+com\chowers\jobs\blog\service\PostService.class
+com\chowers\jobs\blog\service\CommentService.class
+com\chowers\jobs\blog\controllers\BlogController.class
+com\chowers\jobs\blog\service\UserService.class
